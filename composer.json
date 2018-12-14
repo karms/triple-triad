@@ -1,0 +1,15 @@
+{
+    "name": "karms/tripletriad",
+    "description": "triple triad project",
+    "type": "project",
+    "require-dev": {
+        "phpunit/phpunit": "^7"
+    },
+    "authors": [
+        {
+            "name": "karms",
+            "email": "karms@karms.karms"
+        }
+    ],
+    "require": {}
+}
