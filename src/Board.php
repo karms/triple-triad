@@ -132,6 +132,9 @@ class Board
             $this->propagate();
         }
 
+
+        $this->applyRounds();
+
         return !empty($this->rounds);
     }
 
@@ -264,5 +267,49 @@ class Board
         }
 
         return $sets;
+    }
+
+    /**
+     * @param int $x
+     * @param int $y
+     * @return Card
+     */
+    public function getCard(int $x, int $y) : Card
+    {
+        $rounds = array_merge([$this->board], $this->next);
+        foreach($rounds as $round) {
+            foreach($round as $card) {
+                /** @var $card Card */
+                if($card->getCoordinates() === [$x, $y]) return $card;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @return int
+     */
+    public function getWidth() : int
+    {
+        return $this->width;
+    }
+
+    /**
+     * @return int
+     */
+    public function getHeight() : int
+    {
+        return $this->height;
+    }
+
+    private function applyRounds() : void
+    {
+        foreach($this->next as $round) {
+            foreach($round as $card) {
+                list($x, $y) = $card->getCoordinates();
+                $this->board[$x][$y] = $card;
+            }
+        }
     }
 }

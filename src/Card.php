@@ -97,4 +97,10 @@ class Card implements CardInterface
         $this->y = $y;
     }
 
+    public function getCoordinates()
+    {
+        return [$this->x, $this->y];
+    }
+
+
 }
